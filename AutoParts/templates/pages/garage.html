@@ -3,13 +3,13 @@
 
 {% block content %}
     <div class="form-container">
-        <img src="{{ car.model.image_url }}" alt=""><br>
-        Manufacturer: {{ car.manufacturer }}<br>
-        Model: {{ car.model.name }}<br>
-        Engine: {{ car.model.engine }} | {{ car.model.engine.engine_code }} | {{ car.model.engine.power }}<br>
-        Year: {{ car.model.production_date.year }}
+        <img src="{{ customer.car.model.image_url }}" alt=""><br>
+        Manufacturer: {{ customer.car.manufacturer }}<br>
+        Model: {{ customer.car.model.name }}<br>
+        Engine: {{ customer.car.model.engine }} | {{ customer.car.model.engine.engine_code }} | {{ customer.car.model.engine.power }}<br>
+        Year: {{ customer.car.model.production_date.year }}
         <th>
-            <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'parts groups list' car.model.engine.id  %}">Go to products</a>
+            <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'parts groups list' customer.car.model.engine.id  %}">Go to products</a>
         </th>
     </div>
 {% endblock %}

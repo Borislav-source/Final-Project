@@ -1,9 +1,9 @@
 from django.urls import path
 
-from AutoParts.accounts.views import profile_details, change_profile_details
+from AutoParts.accounts.views import ProfileDetailsView, ChangeProfileDetailsView
 
 urlpatterns = [
-    path('', profile_details, name='profile details'),
-    path('account-change/', change_profile_details, name='change profile'),
+    path('', ProfileDetailsView.as_view(), name='profile details'),
+    path('account-change/', ChangeProfileDetailsView.as_view(), name='change profile'),
 ]
 
