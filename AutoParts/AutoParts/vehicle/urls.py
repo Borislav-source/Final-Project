@@ -1,9 +1,9 @@
 from django.urls import path
 
-from AutoParts.vehicle.views import vehicle_models, vehicle_manufacturers, vehicle_engines
+from AutoParts.vehicle.views import VehicleManufacturersView, VehicleModelsView, VehicleEnginesView
 
 urlpatterns = [
-    path('cars/<str:_type>', vehicle_manufacturers, name='cars'),
-    path('car-models/<int:pk><str:_type>', vehicle_models, name='car models'),
-    path('car-model-engines/<int:model>', vehicle_engines, name='vehicle engines'),
+    path('cars/<str:_type>', VehicleManufacturersView.as_view(), name='cars'),
+    path('car-models/<int:pk><str:_type>', VehicleModelsView.as_view(), name='car models'),
+    path('car-model-engines/<int:model>', VehicleEnginesView.as_view(), name='vehicle engines'),
 ]

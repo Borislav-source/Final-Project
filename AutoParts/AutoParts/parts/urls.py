@@ -1,8 +1,8 @@
 from django.urls import path
 
-from AutoParts.parts.views import parts_groups_list, parts_list
+from AutoParts.parts.views import PartsGroupsList, PartsListView
 
 urlpatterns = [
-    path('<int:engine>', parts_groups_list, name='parts groups list'),
-    path('parts-list/<int:engine_id><int:part_id>', parts_list, name='parts list'),
+    path('<int:engine>', PartsGroupsList.as_view(), name='parts groups list'),
+    path('parts-list/<int:engine_id><int:part_id>', PartsListView.as_view(), name='parts list'),
 ]

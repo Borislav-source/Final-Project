@@ -23,15 +23,15 @@ def garage(request):
     return redirect('index')
 
 
-class GarageView(LoginRequiredMixin, TemplateView):
-    template_name = 'pages/garage.html'
-    messages = 'You haven\'t add a car in Your profile.'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['customer'] = Profile.objects.get(user=self.request.user)
-        return context
+# class GarageView(LoginRequiredMixin, TemplateView):
+#     template_name = 'pages/garage.html'
+#     messages = 'You haven\'t add a car in Your profile.'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#         context['customer'] = Profile.objects.get(user=self.request.user)
+#         return context
 
 
 class ContactsView(TemplateView):
