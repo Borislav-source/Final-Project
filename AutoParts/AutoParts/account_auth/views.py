@@ -1,23 +1,28 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, FormView
 
 from AutoParts.account_auth.forms import SignInForm, SignUpForm
 
 
-def sign_in(request):
-    if request.method == 'GET':
-        context = {
-            'form': SignInForm()
-        }
-        return render(request, 'pages/sign-in.html', context)
-    form = SignInForm(request.POST)
-    if form.is_valid():
-        user = form.save()
-        login(request, user)
-        return redirect('index')
-    return render(request, 'pages/sign-in.html', {'form': form})
+class SignInView(FormView):
+    template_name = 'pages/sign-in.html'
+    form_class = SignInForm
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        user = authenticate(
+            email=form.cleaned_data['email'],
+            password=form.cleaned_data['password']
+        )
+
+        if not user:
+            raise ValidationError('Password and/or Email is incorrect!')
+
+        login(self.request, user)
+        return super().form_valid(form)
 
 
 class SignUpView(CreateView):
