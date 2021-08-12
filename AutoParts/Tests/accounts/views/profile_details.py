@@ -1,8 +1,5 @@
 from django.urls import reverse
-from django.utils.timezone import now
-
 from AutoParts.accounts.models import Profile
-from AutoParts.vehicle.models import Vehicle, EngineModel, Manufacturer, VehicleModels
 from Tests.base.mixins import ProfileWithCarMixin
 from Tests.base.tests import AutoPartsTestCase
 
