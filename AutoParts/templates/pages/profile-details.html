@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <div class="form-container">
     <div class="text-center">
         <h1>Hello, {{ request.user }}!</h1>
         <h5>This is your profile</h5>
@@ -15,36 +16,36 @@
         <div class="w-50 m-auto">
             Names: {{ profile.first_name }} {{ profile.last_name }} <br>
             Age: {{ profile.age }} <br>
+            Car: {{ profile.car }} <br>
             <a href="{% url 'change profile' %}">
                 <button>Change Your Profile info</button>
             </a>
         </div>
     </div>
     <hr>
-    {% if profile.car %}
-        <h2 class='text-center'>This is your car</h2>
-        <div class="row justify-content-center">
-        <div class="row justify-content-center">
-
-                    <div class="col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ profile.car.model.image_url }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ profile.car.manufacturer }} {{ profile.car.model }}</h5>
-                                <a href="{% url 'garage' %}" class="btn btn-primary">See details</a>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-
-
-
-    {% else %}
-        <div class="text-center">
-            <h2>You haven't add a car yet!</h2>
-            <a href="#" class="btn btn-success">Add Car</a>
-        </div>
-    {% endif %}
-
+{#    {% if profile.car %}#}
+{#        <h2 class='text-center'>This is your car</h2>#}
+{#        <div class="row justify-content-center">#}
+{#        <div class="row justify-content-center">#}
+{##}
+{#                    <div class="col-lg-4">#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{{ profile.car.model.image_url }}" class="card-img-top" alt="...">#}
+{#                            <div class="card-body">#}
+{#                                <h5 class="card-title">{{ profile.car.manufacturer }} {{ profile.car.model }}</h5>#}
+{#                                <a href="{% url 'garage' %}" class="btn btn-primary">See details</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{##}
+{#    {% else %}#}
+{#        <div class="text-center">#}
+{#            <h2>You haven't add a car yet!</h2>#}
+{#        </div>#}
+{#    {% endif %}#}
+</div>
 {% endblock %}

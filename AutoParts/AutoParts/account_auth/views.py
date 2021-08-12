@@ -13,14 +13,7 @@ class SignInView(FormView):
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
-        user = authenticate(
-            email=form.cleaned_data['email'],
-            password=form.cleaned_data['password']
-        )
-
-        if not user:
-            raise ValidationError('Password and/or Email is incorrect!')
-
+        user = form.save()
         login(self.request, user)
         return super().form_valid(form)
 
