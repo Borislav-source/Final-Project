@@ -14,3 +14,6 @@ class AutoPartsTestCase(TestCase):
     def setUp(self) -> None:
         self.client = Client()
         self.user = UserModel.objects.create_user(email=self.user_email, password=self.user_password)
+
+    def create_new_user(self):
+        self.new_user = UserModel.objects.create_user(email='new_user@email.com', password=self.user_password)

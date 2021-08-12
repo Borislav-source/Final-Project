@@ -1,5 +1,7 @@
 from django.urls import reverse
 
+from AutoParts.accounts.models import Profile
+from AutoParts.store.models import Order
 from Tests.base.tests import AutoPartsTestCase
 
 
@@ -16,7 +18,16 @@ class CartViewTest(AutoPartsTestCase):
         messages = list(response.context['messages'])
         self.assertEqual('You need to be sign in', str(messages[0]))
 
-    def test_cart_view__with_is_authenticated_user_and_no_products(self):
+    def test_cart_view__with_is_authenticated_user_and_no_orders(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('cart'))
-        print(response.context)
+        order = response.context['order']
+        self.assertEqual(None, order)
+
+    def test_cart_view__with_is_authenticated_user_and_orders(self):
+        self.client.force_login(self.user)
+        customer = Profile.objects.first()
+        order = Order.objects.create(customer=customer, complete=False)
+
+        response = self.client.get(reverse('cart'))
+        self.assertEqual(order, response.context['order'])
