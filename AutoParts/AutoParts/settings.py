@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'AutoParts.vehicle',
     'AutoParts.parts',
     'AutoParts.store',
+    'django_cleanup.apps.CleanupConfig',
+
 ]
 
 MIDDLEWARE = [

@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 from AutoParts.accounts.forms import ProfileForm
 from AutoParts.accounts.models import Profile
+from django_cleanup.signals import cleanup_pre_delete
 
 
 class ProfileDetailsView(FormView):

@@ -17,9 +17,10 @@ def garage(request):
         if car:
             return render(request, 'pages/garage.html', {'car': car})
         messages.success(request, 'You haven\'t add a car in Your profile.')
-        return redirect('index')
-    messages.success(request, "You need to be sign in!")
-    return redirect('index')
+        return render(request, 'pages/index.html')
+    else:
+        messages.success(request, "You need to be sign in!")
+        return render(request, 'pages/index.html')
 
 
 # class GarageView(LoginRequiredMixin, TemplateView):
