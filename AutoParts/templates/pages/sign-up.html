@@ -7,7 +7,11 @@
             <section class="col-12 col-sm-6 col-md-3">
                 <form class="form-container" action="{% url 'sign up' %}" method="post">
                     {% csrf_token %}
-                    {{ form }}
+                    <h1 class="row justify-content-center">Sign up</h1><br>
+                    <p aria-label="Email">{{ form.email }}</p>
+                    <p>{{ form.password1 }}</p>
+                    <p>{{ form.password2 }}</p>
+
                     <button>Submit</button>
                 </form>
 

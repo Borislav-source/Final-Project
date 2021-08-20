@@ -39,14 +39,33 @@ class SignInForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailInput(
-        attrs={
-            'class': 'form-control'
-        })
-    password = forms.PasswordInput(
-        attrs={
-            'class': 'form-control'
-        }
+    email = forms.EmailField(
+        required='True',
+        widget=forms.EmailInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': 'Email',
+            },
+        )
+    )
+
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': 'Password'
+
+            }
+        )
+    )
+
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': 'Confirm Password'
+            }
+        )
     )
 
     class Meta:
